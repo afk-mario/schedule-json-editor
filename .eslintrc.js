@@ -1,6 +1,9 @@
 module.exports = {
-  extends: [ 'airbnb-base', 'prettier' ],
+  extends: ['airbnb', 'prettier'],
   rules: {
     'no-console': 0,
+  },
+  globals: {
+    document: true,
   },
 };

@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm version patch && npm run build",
+    "deploy": "now build --public --alias"
   },
   "lint-staged": {
     "src/**/*.{js,json,css}": [
