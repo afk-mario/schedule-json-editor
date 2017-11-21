@@ -1,5 +1,7 @@
 # Schedule Editor
 
+![logo](./logo.svg)
+
 ## Commands
 
 - yarn start
