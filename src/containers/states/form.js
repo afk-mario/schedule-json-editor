@@ -36,21 +36,22 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-    const { onSubmit } = this.props;
+    const { onSubmit, item } = this.props;
 
     event.preventDefault();
     onSubmit(this.state);
+    if (item.pk != null) return;
+
     const state = Object.assign(
       {},
       ...spec.map(({ name, value }) => ({ [name]: value }))
     );
-
     this.setState(
       {
         ...state,
       },
       () => {
-        this.props.history.push('/states/');
+        // this.props.history.push('/states/');
       }
     );
   }
@@ -86,7 +87,7 @@ class Form extends React.Component {
             )
         )}
         <button className="button blue" type="submit">
-          OK
+          SAVE
         </button>
       </form>
     );

@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: item => {
       dispatch(editState(item));
-      props.history.push('/states/');
+      // props.history.push('/states/');
     },
   };
 };

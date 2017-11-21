@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: schedule => {
       dispatch(editSchedule(schedule));
-      props.history.push('/schedules/');
+      // props.history.push('/schedules/');
     },
   };
 };

@@ -38,10 +38,13 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-    const { onSubmit } = this.props;
+    const { onSubmit, item } = this.props;
 
     event.preventDefault();
     onSubmit(this.state);
+    console.log(item);
+    if (item.pk != null) return;
+
     const state = Object.assign(
       {},
       ...spec.map(({ name, value }) => ({ [name]: value }))
@@ -53,7 +56,7 @@ class Form extends React.Component {
         data: [],
       },
       () => {
-        this.props.history.push('/schedules/');
+        // this.props.history.push('/schedules/');
       }
     );
   }
