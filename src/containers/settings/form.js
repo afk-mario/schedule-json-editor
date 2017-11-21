@@ -1,25 +1,25 @@
 import React from 'react';
-import {version} from '../../../package.json';
-import './style.css';
-import Dropzone from 'react-dropzone';
+import { version } from '../../../package.json';
+import Load from '../../components/load';
 
-let SettingsForm = ({loadState}) => {
+import './style.css';
+
+let SettingsForm = ({ state, loadState, saveState }) => {
   return (
     <div className="container settings">
       <section className="dark-container">
-        <section className="load">
-          <Dropzone
-            name="elements"
-            className="drop"
-            activeClassName="active-drop"
-            acceptClassName="accept-drop"
-            rejectClassName="reject-drop"
-            disabledClassName="disabled-drop"
-            onDrop={loadState}>
-            LOAD
-          </Dropzone>
-        </section>
         <div className="version-number">V:{version}</div>
+        <section className="save">
+          <div
+            className="button blue"
+            onClick={() => {
+              saveState(state);
+            }}
+          >
+            save application
+          </div>
+        </section>
+        <Load name="load application" onLoad={loadState} />
       </section>
     </div>
   );

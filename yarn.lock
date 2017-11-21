@@ -2484,6 +2484,10 @@ execa@^0.8.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+exenv@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+
 exit-hook@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
@@ -5543,6 +5547,13 @@ react-json-pretty@^1.7.4:
   resolved "https://registry.yarnpkg.com/react-json-pretty/-/react-json-pretty-1.7.4.tgz#6daa917da9400feff111bc01749e4793feca1869"
   dependencies:
     create-react-class "^15.5.2"
+
+react-modal@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.1.2.tgz#6e1fd656315d6fc62a1edda2b5aecc9752ac6bca"
+  dependencies:
+    exenv "^1.2.0"
+    prop-types "^15.5.10"
 
 react-redux@^5.0.6:
   version "5.0.6"

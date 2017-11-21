@@ -1,17 +1,17 @@
 import React from 'react';
 import './style.css';
 
-const Delete = ({ onClick, id }) => {
+const Export = ({ onClick, id }) => {
   return (
     <div
-      className="delete"
+      className="export"
       onClick={e => {
         onClick(id);
       }}
     >
-      <i>x</i>
+      <i className="material-icons">save</i>
     </div>
   );
 };
 
-export default Delete;
+export default Export;

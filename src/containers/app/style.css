@@ -85,7 +85,12 @@ html {
   flex: 1;
   margin: 0;
   padding: var(--half-margin);
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--light-blue);
   border: 2px solid;
+  border-color: var(--dark-blue);
   border-right-width: 2px;
   border-right-style: solid;
   border-right-color: currentcolor;

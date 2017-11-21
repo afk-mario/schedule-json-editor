@@ -1,4 +1,4 @@
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 export const ADD_SCHEDULE = 'ADD_SCHEDULE';
 
 export function addSchedule(item) {
@@ -34,7 +34,7 @@ export function deleteSchedule(pk) {
   };
 }
 
-export const LOAD_SCHEDULES = '';
+export const LOAD_SCHEDULES = 'LOAD_SCHEDULES';
 export function loadSchedules(items) {
   return {
     type: LOAD_SCHEDULES,

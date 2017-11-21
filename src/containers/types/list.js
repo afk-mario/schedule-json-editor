@@ -1,14 +1,14 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import List from '../../components/list';
-import {deleteType} from './actions';
-import {withRouter} from 'react-router';
+import { deleteType } from './actions';
+import { withRouter } from 'react-router';
 
 const mapStateToProps = state => {
-  const {types} = state || [];
+  const { types } = state || [];
   const items = types.map(item => ({
     id: item.pk,
-    text: `${item.name} - ${item.color}`,
-    style: {color: item.color},
+    text: item.name,
+    style: { color: item.color },
   }));
   return {
     items,
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     onDelete: pk => {
       dispatch(deleteType(pk));
+    },
+    onExport: pk => {
+      props.history.push(`/types/save/${pk}`);
     },
   };
 };

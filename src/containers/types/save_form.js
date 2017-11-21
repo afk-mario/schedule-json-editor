@@ -1,30 +1,21 @@
 import React from 'react';
-import Input from '../../components/input';
-import ExtraFieldList from '../../components/extra-field-list';
-import spec from './spec';
-import extraFieldSpec from './extra-field-spec';
-
 import { withRouter } from 'react-router';
 
-class Form extends React.Component {
+import Input from '../../components/input';
+import spec from './save_spec';
+
+class SaveForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...props.item };
+    this.state = {
+      name: props.item.name,
+      item: props.item,
+      items: this.props.items,
+    };
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onExtraFieldsChange = this.onExtraFieldsChange.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.match.params.pk) return;
-    if (nextProps.match.params.pk !== this.props.match.params.pk) {
-      const item = nextProps.item;
-      this.setState({
-        ...item,
-        data: item.data,
-      });
-    }
   }
 
   handleInputChange(event) {
@@ -50,22 +41,14 @@ class Form extends React.Component {
     this.setState(
       {
         ...state,
-        data: [],
       },
       () => {
-        this.props.history.push('/schedules/');
+        this.props.history.push('/types/');
       }
     );
   }
 
-  onExtraFieldsChange(state) {
-    this.setState({ data: state.items });
-  }
-
   render() {
-    const { data } = this.state;
-    const { options } = this.props;
-
     return (
       <form className="dark-container" onSubmit={this.handleSubmit}>
         {spec.map(
@@ -81,13 +64,6 @@ class Form extends React.Component {
               />
             )
         )}
-        <ExtraFieldList
-          name="rows"
-          items={data}
-          onExtraFieldsChange={this.onExtraFieldsChange}
-          spec={extraFieldSpec}
-          options={options}
-        />
         <button className="button blue" type="submit">
           OK
         </button>
@@ -96,4 +72,4 @@ class Form extends React.Component {
   }
 }
 
-export default withRouter(Form);
+export default withRouter(SaveForm);

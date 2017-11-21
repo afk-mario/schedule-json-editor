@@ -1,4 +1,4 @@
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 export const ADD_TYPE = 'ADD_TYPE';
 
 export function addType(item) {
@@ -34,7 +34,7 @@ export function deleteType(pk) {
   };
 }
 
-export const LOAD_TYPES = '';
+export const LOAD_TYPES = 'LOAD_TYPES';
 export function loadTypes(items) {
   return {
     type: LOAD_TYPES,

@@ -1,16 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearTypes} from './actions';
-import {exportState} from '../../lib/export';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+
 import Tasks from '../../components/tasks';
-import {withRouter} from 'react-router';
+
+import { clearTypes } from './actions';
 
 function mapStateToProps(state) {
-  const {types} = state;
-  return {items: types};
+  const { types } = state;
+  return { items: types };
 }
 
-let TypesTasks = ({items, dispatch, history}) => {
+let TypesTasks = ({ items, dispatch, history }) => {
   const tasks = [
     {
       name: 'Create',
@@ -19,9 +20,9 @@ let TypesTasks = ({items, dispatch, history}) => {
       },
     },
     {
-      name: 'Export',
+      name: 'Load',
       onClick: () => {
-        exportState({items, name: 'types'});
+        history.push('/types/load');
       },
     },
     {

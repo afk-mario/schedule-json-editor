@@ -1,31 +1,29 @@
 import { connect } from 'react-redux';
-import { exportState } from '../../lib/export';
-import { loadSchedules } from '../schedules/actions';
-import { loadTypes } from '../types/actions';
-import Form from './form';
-import './style.css';
+import { addSchedule } from './actions';
+import Load from '../../components/load';
 
 const mapStateToProps = state => {
-  return { state };
+  return {
+    name: 'Load \nSchedule',
+  };
 };
 
-const mapDispatchToProps = (dispatch, state) => {
+const mapDispatchToProps = dispatch => {
   return {
-    saveState: state => {
-      exportState({ items: state, fileName: 'schedule-json-editor' });
-    },
-    loadState: files => {
+    onLoad: files => {
       files.forEach(file => {
         const reader = new FileReader();
 
         reader.onload = () => {
           const fileAsBinaryString = reader.result;
+          const name = file.name.replace(/(.*)\.(.*?)$/, '$1');
           try {
             const savedState = JSON.parse(fileAsBinaryString);
-            const { schedules, types } = savedState || [];
-
-            dispatch(loadSchedules(schedules));
-            dispatch(loadTypes(types));
+            const item = {
+              name,
+              data: savedState.data,
+            };
+            dispatch(addSchedule(item));
           } catch (err) {
             console.log(fileAsBinaryString);
             console.log(err);
@@ -40,6 +38,6 @@ const mapDispatchToProps = (dispatch, state) => {
   };
 };
 
-const Settings = connect(mapStateToProps, mapDispatchToProps)(Form);
+const LoadSchedules = connect(mapStateToProps, mapDispatchToProps)(Load);
 
-export default Settings;
+export default LoadSchedules;

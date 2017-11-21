@@ -1,16 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearSchedules} from './actions';
-import {exportState} from '../../lib/export';
+import { connect } from 'react-redux';
+import { clearSchedules } from './actions';
 import Tasks from '../../components/tasks';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 function mapStateToProps(state) {
-  const {schedules} = state;
-  return {items: schedules};
+  const { schedules } = state;
+  return { items: schedules };
 }
 
-let SchedulesTasks = ({items, dispatch, history}) => {
+let SchedulesTasks = ({ items, dispatch, history }) => {
   const tasks = [
     {
       name: 'Create',
@@ -19,9 +18,9 @@ let SchedulesTasks = ({items, dispatch, history}) => {
       },
     },
     {
-      name: 'Export',
+      name: 'Load',
       onClick: () => {
-        exportState({items, name: 'schedules'});
+        history.push('/schedules/load');
       },
     },
     {
