@@ -1,6 +1,6 @@
 {
-  "name": "schedule-editor",
-  "alias": "schedule-editor",
+  "name": "schedule-json-editor",
+  "alias": "schedule-json-editor",
   "public": true,
   "type": "static"
 

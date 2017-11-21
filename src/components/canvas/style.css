@@ -1,0 +1,28 @@
+.canvas-wrapper {
+  padding: var(--half-margin);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.canvas-wrapper > div {
+  background: var(--dark-gray);
+  padding: var(--half-margin);
+}
+
+.canvas-wrapper,
+.canvas-wrapper > div {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.canvas-wrapper canvas {
+  /* height: 100% !important; */
+  /* width: 100% !important; */
+}
+
+.konvajs-content {
+  /* width: 100% !important; */
+  /* height: 100% !important; */
+}

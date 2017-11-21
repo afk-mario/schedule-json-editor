@@ -1,0 +1,119 @@
+form {
+  display: flex;
+  padding: var(--margin);
+  width: 90%;
+  margin: var(--margin) auto auto auto;
+  /* max-width: 500px; */
+  flex-flow: column nowrap;
+}
+
+input {
+  width: 100%;
+  height: auto;
+  padding: var(--half-margin) 0 2px 0;
+  font-size: 1.2em;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--light-gray);
+  border-bottom: 2px solid var(--medium-gray);
+  transition: all 0.2s ease;
+  color: var(--light-blue);
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  text-align: right;
+}
+
+input[type='color'] {
+  height: 50px;
+  border: none;
+}
+
+input:focus {
+  /* color: var(--light-blue); */
+  color: var(--white);
+  border-bottom-color: var(--light-blue);
+}
+
+form > *:not(:first-child) {
+  margin: var(--margin) 0 0 0;
+}
+
+label {
+  margin: 0 0 var(--half-margin) 0;
+  display: block;
+  color: var(--dark-blue);
+}
+
+button,
+form .button {
+  padding: var(--half-margin);
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+}
+
+.input-checkbox label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.input-checkbox span {
+  margin: 0 var(--half-margin) 0 0;
+}
+
+.input-checkbox input {
+  width: auto;
+}
+
+.input-checkbox i {
+  color: var(--light-blue);
+  transition: all 0.2 ease;
+  flex: 1;
+  text-align: right;
+}
+
+.container input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox']:checked + label i {
+  color: var(--red);
+}
+
+.Select {
+  border: 2px solid var(--dark-blue);
+}
+
+.Select .Select-control {
+  border-radius: 0;
+  border: 2px solid var(--dark-blue);
+}
+
+.Select,
+.Select div,
+.Select input,
+.Select span {
+  background: var(--dark-gray);
+  color: var(--light-gray);
+}
+
+.Select.has-value.Select--single.is-focused > .Select-control .Select-value span {
+  color: var(--white);
+}
+
+.Select.has-value.Select--single > .Select-control .Select-value span {
+  color: var(--light-blue);
+}

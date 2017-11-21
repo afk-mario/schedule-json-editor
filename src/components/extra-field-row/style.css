@@ -1,0 +1,74 @@
+.extra-field-row {
+  margin: var(--margin) 0 0 0;
+  border-left: 10px solid black;
+  cursor: move;
+}
+
+.fieldset {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.fieldset .input-number,
+.fieldset .input-checkbox,
+.fieldset .delete,
+.fieldset .Select {
+  display: block;
+  width: auto;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.fieldset .delete {
+  border: 2px solid var(--medium-gray);
+  flex: 0 0 auto;
+  width: 50px;
+}
+
+.fieldset .delete:hover {
+  border-color: var(--red);
+}
+
+.fieldset .input,
+.fieldset .delete,
+.fieldset .Select {
+  margin: 0 0 0 var(--margin);
+}
+
+.fieldset .Select {
+  min-width: 100px;
+}
+
+.fieldset input {
+  width: auto;
+}
+
+.extra-field-row {
+  margin: 0 0 var(--margin) 0;
+}
+
+.fieldset .input-checkbox {
+  flex: 0 0 auto;
+}
+
+.fieldset .input-checkbox label {
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.fieldset .input-number {
+  max-width: 200px;
+}
+
+.fieldset input[type='number'] {
+  width: 100%;
+  padding: 0;
+}
+
+.fieldset label {
+  margin: 0;
+}

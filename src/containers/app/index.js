@@ -1,21 +1,25 @@
-import React, {Component} from 'react';
-import logo from '../../img/logo.svg';
+import React from 'react';
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
+import routes from '../../routes';
+
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import RouteWithSubRoutes from '../../components/RouteWithSubRoutes';
+
 import './style.css';
+import './button.css';
+import './form.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+export default () => (
+  <Router>
+    <div>
+      <Header />
+      <div className="page-child">
+        <Switch>
+          {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+        </Switch>
       </div>
-    );
-  }
-}
-
-export default App;
+      <Footer />
+    </div>
+  </Router>
+);
