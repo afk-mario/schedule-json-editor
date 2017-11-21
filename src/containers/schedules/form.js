@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Input from '../../components/input';
 import ExtraFieldList from '../../components/extra-field-list';
 import spec from './spec';
@@ -43,6 +44,7 @@ class Form extends React.Component {
     event.preventDefault();
     onSubmit(this.state);
     console.log(item);
+
     if (item.pk != null) return;
 
     const state = Object.assign(
@@ -92,7 +94,7 @@ class Form extends React.Component {
           options={options}
         />
         <button className="button blue" type="submit">
-          OK
+          SAVE
         </button>
       </form>
     );

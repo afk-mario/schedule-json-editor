@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { actions as notifActions } from 'redux-notifications';
 
 import List from '../../components/list';
 
@@ -18,12 +19,20 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
+  const { notifSend } = notifActions;
   return {
     onClick: pk => {
       props.history.push(`/states/edit/${pk}`);
     },
-    onDelete: pk => {
+    onDelete: (pk, name) => {
       dispatch(deleteState(pk));
+      dispatch(
+        notifSend({
+          message: `Deleted ${name}`,
+          kind: 'danger',
+          dismissAfter: 1000,
+        })
+      );
     },
     onExport: pk => {
       props.history.push(`/states/save/${pk}`);

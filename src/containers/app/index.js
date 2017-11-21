@@ -1,5 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Notifs } from 'redux-notifications';
+
 import routes from '../../routes';
 
 import Header from '../../components/header';
@@ -9,10 +11,12 @@ import RouteWithSubRoutes from '../../components/RouteWithSubRoutes';
 import './style.css';
 import './button.css';
 import './form.css';
+import './notif.css';
 
 export default () => (
   <Router>
     <div>
+      <Notifs />
       <Header />
       <div className="page-child">
         <Switch>

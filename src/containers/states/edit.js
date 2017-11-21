@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { actions as notifActions } from 'redux-notifications';
 
+import { withRouter } from 'react-router';
 import { editState } from './actions';
 import Form from './form';
 
@@ -17,10 +18,17 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
+  const { notifSend } = notifActions;
   return {
     onSubmit: item => {
       dispatch(editState(item));
-      // props.history.push('/states/');
+      dispatch(
+        notifSend({
+          message: `Saved ${item.name}`,
+          kind: 'success',
+          dismissAfter: 1000,
+        })
+      );
     },
   };
 };

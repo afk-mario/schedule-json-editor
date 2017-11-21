@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { actions as notifActions } from 'redux-notifications';
+
 import { editSchedule } from './actions';
 import Form from './form';
-import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, props) => {
   const { pk } = props.match.params;
@@ -17,10 +19,17 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
+  const { notifSend } = notifActions;
   return {
-    onSubmit: schedule => {
-      dispatch(editSchedule(schedule));
-      // props.history.push('/schedules/');
+    onSubmit: item => {
+      dispatch(editSchedule(item));
+      dispatch(
+        notifSend({
+          message: `Saved ${item.name}`,
+          kind: 'success',
+          dismissAfter: 1000,
+        })
+      );
     },
   };
 };

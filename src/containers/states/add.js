@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { actions as notifActions } from 'redux-notifications';
+
 import { addState } from './actions';
 import Form from './form';
 import spec from './spec';
@@ -15,9 +17,17 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  const { notifSend } = notifActions;
   return {
-    onSubmit: element => {
-      dispatch(addState(element));
+    onSubmit: item => {
+      dispatch(addState(item));
+      dispatch(
+        notifSend({
+          message: `Created ${item.name}`,
+          kind: 'success',
+          dismissAfter: 1000,
+        })
+      );
     },
   };
 };

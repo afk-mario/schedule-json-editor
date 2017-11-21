@@ -1,0 +1,36 @@
+.notif__container {
+  position: fixed;
+  margin: auto;
+  right: 0;
+  top: var(--header-height);
+  z-index: 1000;
+  width: calc(100% - 300px);
+  height: auto;
+}
+
+.notif {
+  width: 100%;
+  height: var(--header-height);
+  padding: var(--half-margin);
+  margin: auto;
+  background: var(--dark-gray);
+  opacity: 0.8;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  /* transform: translate(-50%, 0); */
+}
+
+.notif:not(:first-child) {
+  margin: var(--half-margin) auto auto auto;
+}
+
+.notif--success {
+  border: 2px solid var(--green);
+  color: var(--green);
+}
+
+.notif--danger {
+  border: 2px solid var(--red);
+  color: var(--red);
+}

@@ -18,7 +18,9 @@ const List = ({ items, onClick, onDelete, onExport }) => {
       {items.map((item, index) => (
         <Row key={item.id} {...item} onClick={() => onClick(item.id)}>
           {onExport && <Export id={item.id} onClick={onExport} />}
-          {onDelete && <Delete id={item.id} onClick={onDelete} />}
+          {onDelete && (
+            <Delete id={item.id} onClick={onDelete} name={item.text} />
+          )}
         </Row>
       ))}
     </ul>
