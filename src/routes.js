@@ -6,11 +6,11 @@ import EditSchedules from './containers/schedules/edit';
 import SaveSchedules from './containers/schedules/save';
 import LoadSchedules from './containers/schedules/load';
 
-import Types from './containers/types';
-import AddTypes from './containers/types/add';
-import EditTypes from './containers/types/edit';
-import SaveTypes from './containers/types/save';
-import LoadTypes from './containers/types/load';
+import States from './containers/states';
+import AddStates from './containers/states/add';
+import EditStates from './containers/states/edit';
+import SaveStates from './containers/states/save';
+import LoadStates from './containers/states/load';
 
 import Json from './containers/json';
 import Settings from './containers/settings';
@@ -51,28 +51,28 @@ const routes = [
     ],
   },
   {
-    path: '/types',
-    name: 'Types',
-    component: Types,
+    path: '/states',
+    name: 'States',
+    component: States,
     routes: [
       {
-        path: '/types/add',
-        component: AddTypes,
+        path: '/states/add',
+        component: AddStates,
         exact: true,
       },
       {
-        path: '/types/edit/:pk',
-        component: EditTypes,
+        path: '/states/edit/:pk',
+        component: EditStates,
         exact: true,
       },
       {
-        path: '/types/save/:pk',
-        component: SaveTypes,
+        path: '/states/save/:pk',
+        component: SaveStates,
         exact: true,
       },
       {
-        path: '/types/load',
-        component: LoadTypes,
+        path: '/states/load',
+        component: LoadStates,
         exact: true,
       },
     ],

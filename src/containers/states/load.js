@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { addType } from './actions';
+import { addState } from './actions';
 import Load from '../../components/load';
 
 const mapStateToProps = state => {
   return {
-    name: 'Load \nType',
+    name: 'Load \nState',
   };
 };
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => {
           const fileAsBinaryString = reader.result;
           try {
             const savedState = JSON.parse(fileAsBinaryString);
-            dispatch(addType(savedState));
+            dispatch(addState(savedState));
           } catch (err) {
             console.log(fileAsBinaryString);
             console.log(err);
@@ -33,6 +33,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const LoadTypes = connect(mapStateToProps, mapDispatchToProps)(Load);
+const LoadStates = connect(mapStateToProps, mapDispatchToProps)(Load);
 
-export default LoadTypes;
+export default LoadStates;

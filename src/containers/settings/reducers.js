@@ -1,6 +1,6 @@
-import {SET_NUMBER_OF_COLUMNS, SET_NUMBER_OF_ROWS} from './actions';
+import { SET_NUMBER_OF_COLUMNS, SET_NUMBER_OF_ROWS } from './actions';
 
-function settings(state = {columns: 32, rows: 9}, action) {
+function settings(state = {}, action) {
   switch (action.type) {
     case SET_NUMBER_OF_COLUMNS:
       return {

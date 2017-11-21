@@ -4,36 +4,36 @@ import { withRouter } from 'react-router';
 
 import Tasks from '../../components/tasks';
 
-import { clearTypes } from './actions';
+import { clearStates } from './actions';
 
 function mapStateToProps(state) {
-  const { types } = state;
-  return { items: types };
+  const { states } = state;
+  return { items: states };
 }
 
-let TypesTasks = ({ items, dispatch, history }) => {
+let StatesTasks = ({ items, dispatch, history }) => {
   const tasks = [
     {
       name: 'Create',
       onClick: () => {
-        history.push('/types/add');
+        history.push('/states/add');
       },
     },
     {
       name: 'Load',
       onClick: () => {
-        history.push('/types/load');
+        history.push('/states/load');
       },
     },
     {
       name: 'Clear',
       onClick: () => {
-        dispatch(clearTypes());
+        dispatch(clearStates());
       },
     },
   ];
   return <Tasks items={tasks} />;
 };
 
-TypesTasks = withRouter(connect(mapStateToProps)(TypesTasks));
-export default TypesTasks;
+StatesTasks = withRouter(connect(mapStateToProps)(StatesTasks));
+export default StatesTasks;

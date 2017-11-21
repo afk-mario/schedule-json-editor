@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { exportState } from '../../lib/export';
 import { loadSchedules } from '../schedules/actions';
-import { loadTypes } from '../types/actions';
+import { loadStates } from '../states/actions';
 import Form from './form';
 import './style.css';
 
@@ -22,10 +22,10 @@ const mapDispatchToProps = (dispatch, state) => {
           const fileAsBinaryString = reader.result;
           try {
             const savedState = JSON.parse(fileAsBinaryString);
-            const { schedules, types } = savedState || [];
+            const { schedules, states } = savedState || [];
 
             dispatch(loadSchedules(schedules));
-            dispatch(loadTypes(types));
+            dispatch(loadStates(states));
           } catch (err) {
             console.log(fileAsBinaryString);
             console.log(err);

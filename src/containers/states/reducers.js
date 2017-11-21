@@ -1,38 +1,38 @@
 import {
-  ADD_TYPE,
-  CLEAR_TYPES,
-  EDIT_TYPE,
-  DELETE_TYPE,
-  LOAD_TYPES,
+  ADD_STATE,
+  CLEAR_STATES,
+  EDIT_STATE,
+  DELETE_STATE,
+  LOAD_STATES,
 } from './actions';
 
-function types(state = [], action) {
+function states(state = [], action) {
   switch (action.type) {
-    case ADD_TYPE:
+    case ADD_STATE:
       return [
         ...state,
         {
           ...action.item,
         },
       ];
-    case EDIT_TYPE:
+    case EDIT_STATE:
       return state.map(
         item =>
           item.pk === action.item.pk
             ? {
                 ...action.item,
               }
-            : item,
+            : item
       );
-    case DELETE_TYPE:
+    case DELETE_STATE:
       return state.filter(item => item.pk !== action.pk);
-    case CLEAR_TYPES:
+    case CLEAR_STATES:
       return [];
-    case LOAD_TYPES:
+    case LOAD_STATES:
       return action.items;
     default:
       return state;
   }
 }
 
-export default types;
+export default states;

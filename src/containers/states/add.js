@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { addSchedule } from './actions';
+import { addState } from './actions';
 import Form from './form';
 import spec from './spec';
 
 const mapStateToProps = state => {
-  const { states } = state || [];
   const item = Object.assign(
     {},
     ...spec.map(({ name, value }) => ({ [name]: value }))
@@ -12,18 +11,17 @@ const mapStateToProps = state => {
 
   return {
     item,
-    options: states,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onSubmit: element => {
-      dispatch(addSchedule(element));
+      dispatch(addState(element));
     },
   };
 };
 
-const AddSchedule = connect(mapStateToProps, mapDispatchToProps)(Form);
+const AddState = connect(mapStateToProps, mapDispatchToProps)(Form);
 
-export default AddSchedule;
+export default AddState;

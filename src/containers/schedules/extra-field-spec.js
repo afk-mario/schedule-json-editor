@@ -1,7 +1,7 @@
 const spec = [
   {
-    name: 'type',
-    label: 'Type',
+    name: 'state',
+    label: 'State',
     type: 'select',
     value: '',
     required: true,

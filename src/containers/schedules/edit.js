@@ -1,18 +1,18 @@
-import {connect} from 'react-redux';
-import {editSchedule} from './actions';
+import { connect } from 'react-redux';
+import { editSchedule } from './actions';
 import Form from './form';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, props) => {
-  const {pk} = props.match.params;
-  const {schedules, types} = state || [];
+  const { pk } = props.match.params;
+  const { schedules, states } = state || [];
   const single = schedules.filter(item => item.pk === pk)[0] || undefined;
   if (!single) {
     props.history.push('/schedules/');
   }
   return {
     item: single,
-    options: types,
+    options: states,
   };
 };
 
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 const EditSchedule = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Form),
+  connect(mapStateToProps, mapDispatchToProps)(Form)
 );
 
 export default EditSchedule;

@@ -6,7 +6,7 @@ import List from './list';
 import Tasks from './tasks';
 import './style.css';
 
-export default ({routes}) => (
+export default ({ routes }) => (
   <section className="schedules">
     <section className="side-static">
       <List />

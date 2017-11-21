@@ -1,13 +1,13 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
-import {DragSource, DropTarget} from 'react-dnd';
+import { findDOMNode } from 'react-dom';
+import { DragSource, DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
 
 import Delete from '../delete';
 import Input from '../../components/input';
 import Select from 'react-select';
 
-import {flow} from 'lodash';
+import { flow } from 'lodash';
 
 import './style.css';
 
@@ -108,14 +108,14 @@ const ExtraFieldRow = props => {
       <div className="extra-field-row" style={style}>
         <div className="fieldset" id={id}>
           <Select
-            name="type"
+            name="state"
             options={options}
             labelKey="name"
             valueKey="name"
-            value={item.type}
+            value={item.state}
             clearable={false}
             onChange={option => {
-              onChange(index, {...item, type: option.name});
+              onChange(index, { ...item, state: option.name });
             }}
             required
           />
@@ -130,20 +130,20 @@ const ExtraFieldRow = props => {
                   id={`${field.name}-${index}`}
                   value={item[field.name]}
                   onChange={e => {
-                    const {target} = e;
+                    const { target } = e;
                     const value =
                       target.type === 'checkbox'
                         ? target.checked
                         : target.value;
-                    onChange(index, {...item, [field.name]: value});
+                    onChange(index, { ...item, [field.name]: value });
                   }}
                 />
-              ),
+              )
           )}
           <Delete id={index} onClick={onDelete} />
         </div>
-      </div>,
-    ),
+      </div>
+    )
   );
 };
 
@@ -162,5 +162,5 @@ ExtraFieldRow.propTypes = {
 
 export default flow(
   DragSource('CARD', cardSource, collect),
-  DropTarget('CARD', cardTarget, idk),
+  DropTarget('CARD', cardTarget, idk)
 )(ExtraFieldRow);

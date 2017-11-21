@@ -2,20 +2,27 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 import Input from '../../components/input';
-import spec from './save_spec';
+import spec from './spec';
 
-class SaveForm extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: props.item.name,
-      item: props.item,
-      items: this.props.items,
-    };
-
+    this.state = { ...props.item };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.onSelectOption = this.onSelectOption.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.match.params.pk) return;
+    if (nextProps.match.params.pk !== this.props.match.params.pk) {
+      const item = nextProps.item;
+      this.setState({
+        ...item,
+        linePoints: item.linePoints,
+      });
+    }
   }
 
   handleInputChange(event) {
@@ -43,12 +50,26 @@ class SaveForm extends React.Component {
         ...state,
       },
       () => {
-        this.props.history.push('/types/');
+        this.props.history.push('/states/');
       }
     );
   }
 
+  onSelectOption(item) {
+    const { name } = item;
+    const data = Object.assign(
+      {},
+      ...item.fields.map(({ name, value }) => ({ [name]: value }))
+    );
+    this.setState({
+      name,
+      data,
+    });
+  }
+
   render() {
+    // const {items} = this.props;
+
     return (
       <form className="dark-container" onSubmit={this.handleSubmit}>
         {spec.map(
@@ -72,4 +93,4 @@ class SaveForm extends React.Component {
   }
 }
 
-export default withRouter(SaveForm);
+export default withRouter(Form);
