@@ -12,6 +12,9 @@ function settings(state = {}, action) {
         ...state,
         rows: action.rows,
       };
+    case '@@router/LOCATION_CHANGE':
+      // console.log(action);
+      return state;
     default:
       return state;
   }

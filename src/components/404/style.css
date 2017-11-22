@@ -1,0 +1,22 @@
+.error {
+  width: 80%;
+  background: var(--dark-gray);
+  border: 2px solid var(--dark-blue);
+  text-align: center;
+  padding: var(--margin);
+  margin: var(--double-margin) auto auto auto;
+}
+
+.error h1 {
+  font-size: 1.2em;
+  letter-spacing: 1em;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: var(--margin) auto var(--double-margin) auto;
+}
+
+code {
+  background: var(--black);
+  color: var(--red);
+  padding: var(--half-margin);
+}

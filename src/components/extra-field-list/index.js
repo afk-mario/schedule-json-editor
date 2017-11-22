@@ -70,7 +70,7 @@ class ExtraFieldList extends React.Component {
   }
 
   render() {
-    const { items } = this.state || [];
+    const { items = [] } = this.state;
     const { name, spec, options } = this.props;
 
     return (

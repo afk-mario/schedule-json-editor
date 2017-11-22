@@ -1,5 +1,7 @@
 import React from 'react';
 
+import NoMatch from './components/404';
+
 import Schedules from './containers/schedules';
 import AddSchedules from './containers/schedules/add';
 import EditSchedules from './containers/schedules/edit';
@@ -88,6 +90,11 @@ const routes = [
     name: 'Settings',
     exact: true,
     component: Settings,
+  },
+  {
+    path: '/404',
+    exact: false,
+    component: NoMatch,
   },
 ];
 

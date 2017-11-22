@@ -87,7 +87,7 @@ class Form extends React.Component {
             )
         )}
         <ExtraFieldList
-          name="rows"
+          name="Add State"
           items={data}
           onExtraFieldsChange={this.onExtraFieldsChange}
           spec={extraFieldSpec}

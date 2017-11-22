@@ -2,6 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { routerMiddleware, push } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createHistory from 'history/createBrowserHistory';
+
 import thunk from 'redux-thunk';
 import { throttle } from 'lodash';
 
@@ -13,12 +17,15 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'react-select/dist/react-select.css';
 
+const history = createHistory();
+const a = routerMiddleware(history);
+const middleware = [a, thunk];
+
 const persistedState = loadState();
 const store = createStore(
   AppReducer,
   persistedState,
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(...middleware))
 );
 
 store.subscribe(
@@ -34,7 +41,7 @@ store.subscribe(
 
 render(
   <Provider store={store}>
-    <App />
+    <App history={history} />
   </Provider>,
   document.getElementById('root')
 );
