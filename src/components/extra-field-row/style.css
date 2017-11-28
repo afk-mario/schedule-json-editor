@@ -12,6 +12,7 @@
 }
 
 .fieldset .input-number,
+.fieldset .input-string,
 .fieldset .input-checkbox,
 .fieldset .delete,
 .fieldset .Select {
@@ -60,11 +61,13 @@
   flex-flow: row nowrap;
 }
 
-.fieldset .input-number {
+.fieldset .input-number,
+.fieldset .input-string {
   max-width: 200px;
 }
 
-.fieldset input[type='number'] {
+.fieldset input[type='number'],
+.fieldset input[type='string'] {
   width: 100%;
   padding: 0;
 }
