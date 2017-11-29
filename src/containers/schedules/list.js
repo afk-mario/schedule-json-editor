@@ -23,12 +23,16 @@ const mapStateToProps = state => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { notifSend } = notifActions;
   const { dispatch } = dispatchProps;
-  const { schedules, serverIp } = stateProps;
+  const { schedules } = stateProps;
+  const { serverIp } = stateProps || 'localhost';
+  // TODO: Move this to a global variable instead of a component
   const sb = new Spacebrew.Client(
     serverIp,
     'schedule-json-editor',
     'A React schedule editor'
   );
+
+  sb.connect();
 
   return {
     ...stateProps,
@@ -52,7 +56,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       console.log(sb);
       console.log(jsonItem);
       try {
-        sb.connect();
         sb.send(schedule.name, 'string', jsonItem);
       } catch (e) {
         console.log(e);

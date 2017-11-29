@@ -17,9 +17,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'react-select/dist/react-select.css';
 
-// import {Spacebrew} from './lib/sb';
-// console.log(Spacebrew);
-// var sb = new Spacebrew.Client('server', 'name', 'description', 'options');
+import { Spacebrew } from './lib/sb';
+window.Spacebrew = Spacebrew;
 
 const history = createHistory();
 const a = routerMiddleware(history);

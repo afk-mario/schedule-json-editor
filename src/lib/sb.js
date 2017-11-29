@@ -67,7 +67,7 @@ var Spacebrew = Spacebrew || {};
 /**
  * create placeholder var for WebSocket object, if it does not already exist
  */
-var WebSocket = WebSocket || {};
+// var WebSocket = WebSocket || {};
 
 /**
  * Check if Running in Browser or Server (Node) Environment *
@@ -106,12 +106,9 @@ if (window) {
 
 // if app is running in a node server environment then package Spacebrew library as a module.
 // 		WebSocket module (ws) needs to be saved in a node_modules so that it can be imported.
-if (!window && module) {
-  WebSocket = require('ws');
-  module.exports = {
-    Spacebrew: Spacebrew,
-  };
-}
+module.exports = {
+  Spacebrew: Spacebrew,
+};
 
 /**
  * Define the Spacebrew Library *
@@ -250,6 +247,7 @@ Spacebrew.Client.prototype.connect = function() {
   } catch (e) {
     this._isConnected = false;
     console.log('[connect:Spacebrew] connection attempt failed');
+    console.log(e);
   }
 };
 
