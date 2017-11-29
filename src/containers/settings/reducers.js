@@ -1,16 +1,11 @@
-import { SET_NUMBER_OF_COLUMNS, SET_NUMBER_OF_ROWS } from './actions';
+import { SET_SERVER_IP } from './actions';
 
 function settings(state = {}, action) {
   switch (action.type) {
-    case SET_NUMBER_OF_COLUMNS:
+    case SET_SERVER_IP:
       return {
         ...state,
-        columns: action.columns,
-      };
-    case SET_NUMBER_OF_ROWS:
-      return {
-        ...state,
-        rows: action.rows,
+        serverIp: action.ip,
       };
     case '@@router/LOCATION_CHANGE':
       // console.log(action);

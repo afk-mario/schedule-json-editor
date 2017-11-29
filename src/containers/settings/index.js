@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { setServerIp } from './actions';
 import { exportState } from '../../lib/export';
 import { loadSchedules } from '../schedules/actions';
 import { loadStates } from '../states/actions';
@@ -6,11 +7,15 @@ import Form from './form';
 import './style.css';
 
 const mapStateToProps = state => {
-  return { state };
+  const { serverIp } = state.settings || '';
+  return { state, ip: serverIp };
 };
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
+    onChangeIp: e => {
+      dispatch(setServerIp(e.target.value));
+    },
     saveState: state => {
       exportState({ items: state, fileName: 'schedule-json-editor' });
     },

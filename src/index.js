@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { routerMiddleware, push } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createHistory from 'history/createBrowserHistory';
 
@@ -16,6 +16,10 @@ import { loadState, saveState } from './lib/localStorage';
 import registerServiceWorker from './registerServiceWorker';
 
 import 'react-select/dist/react-select.css';
+
+// import {Spacebrew} from './lib/sb';
+// console.log(Spacebrew);
+// var sb = new Spacebrew.Client('server', 'name', 'description', 'options');
 
 const history = createHistory();
 const a = routerMiddleware(history);
