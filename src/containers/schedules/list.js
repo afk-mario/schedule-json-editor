@@ -24,11 +24,24 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { notifSend } = notifActions;
   const { dispatch } = dispatchProps;
   const { schedules, serverIp } = stateProps;
-  const sb = new Spacebrew.Client(
-    serverIp,
-    'schedule-json-editor',
-    'A React schedule editor'
-  );
+  const sb = new Spacebrew.Client({ reconnect: true });
+  sb.server = serverIp;
+  sb.port = 9000;
+  sb.name = 'Schedule editor';
+
+  // add pubishers
+  sb.addPublish('OnScheduleUpdate', 'string');
+
+  // callbacks
+  sb.onOpen = onOpen;
+
+  // check when spacebrew is open
+  function onOpen() {
+    console.log('Spacebrew has opened : ' + sb.name());
+  }
+
+  // connect spacebrew
+  sb.connect();
 
   return {
     ...stateProps,
