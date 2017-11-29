@@ -11,7 +11,7 @@ const spec = [
     name: 'timer',
     label: 'Timer',
     type: 'number',
-    value: 0,
+    value: -1,
     required: true,
   },
   {
@@ -19,6 +19,14 @@ const spec = [
     label: 'Video',
     type: 'checkbox',
     value: false,
+    required: false,
+  },
+  {
+    name: 'template',
+    label: 'Advanced',
+    type: 'string',
+    required: false,
+    value: '',
   },
 ];
 
