@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  *
  * Spacebrew Library for Javascript
@@ -532,10 +533,7 @@ Spacebrew.Client.prototype._onMessage = function(e) {
   } else {
     data = JSON.parse(e.data);
   }
-  var name,
-    type,
-    value,
-    clientName; // not used yet, needs to be added to callbacks!
+  var name, type, value, clientName; // not used yet, needs to be added to callbacks!
 
   // handle client messages
   if (

@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Row from '../row';
 import Delete from '../delete';
 import Export from '../export';
+import Send from '../send';
 
 import './style.css';
 
-const List = ({ items, onClick, onDelete, onExport }) => {
+const List = ({ items, onClick, onDelete, onExport, onSend }) => {
   if (items.length < 1)
     return (
       <ul className="list">
@@ -18,6 +19,7 @@ const List = ({ items, onClick, onDelete, onExport }) => {
       {items.map((item, index) => (
         <Row key={item.id} {...item} onClick={() => onClick(item.id)}>
           {onExport && <Export id={item.id} onClick={onExport} />}
+          {onSend && <Send id={item.id} onClick={onSend} />}
           {onDelete && (
             <Delete id={item.id} onClick={onDelete} name={item.text} />
           )}
@@ -37,6 +39,7 @@ List.propTypes = {
   onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
   onExport: PropTypes.func,
+  onSend: PropTypes.func,
 };
 
 export default List;

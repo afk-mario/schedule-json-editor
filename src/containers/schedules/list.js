@@ -4,23 +4,37 @@ import { actions as notifActions } from 'redux-notifications';
 
 import List from '../../components/list';
 import { deleteSchedule } from './actions';
+import { Spacebrew } from '../../lib/sb';
 
 const mapStateToProps = state => {
   const { schedules } = state || [];
+  const { serverIp } = state.settings || '';
   const items = schedules.map(item => ({
     id: item.pk,
     text: item.name,
   }));
   return {
     items,
+    schedules,
+    serverIp,
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { notifSend } = notifActions;
+  const { dispatch } = dispatchProps;
+  const { schedules, serverIp } = stateProps;
+  const sb = new Spacebrew.Client(
+    serverIp,
+    'schedule-json-editor',
+    'A React schedule editor'
+  );
+
   return {
+    ...stateProps,
+    ...ownProps,
     onClick: pk => {
-      props.history.push(`/schedules/edit/${pk}`);
+      ownProps.history.push(`/schedules/edit/${pk}`);
     },
     onDelete: (pk, name) => {
       dispatch(deleteSchedule(pk));
@@ -32,14 +46,26 @@ const mapDispatchToProps = (dispatch, props) => {
         })
       );
     },
+    onSend: pk => {
+      const schedule = schedules.find(item => item.pk === pk);
+      const jsonItem = JSON.stringify(schedule);
+      console.log(sb);
+      console.log(jsonItem);
+      try {
+        sb.connect();
+        sb.send(schedule.name, 'string', jsonItem);
+      } catch (e) {
+        console.log(e);
+      }
+    },
     onExport: pk => {
-      props.history.push(`/schedules/save/${pk}`);
+      ownProps.history.push(`/schedules/save/${pk}`);
     },
   };
 };
 
 const ScheduleList = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(List)
+  connect(mapStateToProps, null, mergeProps)(List)
 );
 
 export default ScheduleList;
