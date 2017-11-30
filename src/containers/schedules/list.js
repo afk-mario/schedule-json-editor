@@ -5,13 +5,14 @@ import { actions as notifActions } from 'redux-notifications';
 import List from '../../components/list';
 import { deleteSchedule } from './actions';
 import { Spacebrew } from '../../lib/sb';
+import { truncate } from '../../lib/utils';
 
 const mapStateToProps = state => {
   const { schedules } = state || [];
   const { serverIp } = state.settings || '';
   const items = schedules.map(item => ({
     id: item.pk,
-    text: item.name,
+    text: truncate(item.name, 9),
   }));
   return {
     items,

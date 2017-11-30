@@ -11,6 +11,8 @@
   /* sizes */
   --header-height: 50px;
   --footer-height: 0px;
+  --sidebar-width: 25%;
+  --sidebar-min-width: 320px;
 
   /* colors */
 

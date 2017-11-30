@@ -21,3 +21,8 @@ export function clone(target, source) {
   Reflect.setPrototypeOf(target, prototype);
   return target;
 }
+
+export function truncate(string, length) {
+  if (string.length > length) return string.substring(0, length) + '…';
+  return string;
+}

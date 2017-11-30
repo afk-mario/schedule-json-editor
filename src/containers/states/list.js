@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { actions as notifActions } from 'redux-notifications';
 
 import List from '../../components/list';
+import { truncate } from '../../lib/utils';
 
 import { deleteState } from './actions';
 
@@ -10,7 +11,7 @@ const mapStateToProps = state => {
   const { states } = state || [];
   const items = states.map(item => ({
     id: item.pk,
-    text: item.name,
+    text: truncate(item.name, 15),
     style: { color: item.color },
   }));
   return {

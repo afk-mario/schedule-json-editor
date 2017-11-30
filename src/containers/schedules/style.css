@@ -7,7 +7,8 @@
 }
 
 .side-static {
-  width: 300px;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-min-width);
   height: 100%;
 }
 
@@ -18,8 +19,9 @@
 }
 
 .child {
-  width: calc(100% - 300px);
+  width: auto;
   height: 100%;
   border-left: 2px solid var(--medium-gray);
   overflow-y: auto;
+  flex: 1 0 auto;
 }
