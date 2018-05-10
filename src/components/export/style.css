@@ -25,7 +25,7 @@
 }
 
 .export:hover {
-  color: var(--light-blue);
-  border-left-color: var(--light-blue);
+  color: var(--dow-red);
+  border-left-color: var(--dow-red);
   box-shadow: var(--box-shadow-2);
 }

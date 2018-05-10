@@ -2,20 +2,24 @@
   background: var(--dark-gray);
   width: 80%;
   padding: var(--margin);
-  margin: auto;
 }
 
 .save .button.blue {
   width: 100%;
   padding: var(--margin);
   font-size: 1.6em;
-  letter-spacing: 0.6em;
-  font-weight: 100;
+  letter-spacing: 0.1em;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 2.5em;
-  color: var(--dark-blue);
+  color: var(--dow-gray);
   margin: auto;
   background: var(--black);
+}
+
+.load, .save {
+  margin: auto;
+  height: 160px;
 }
 
 .container.settings {

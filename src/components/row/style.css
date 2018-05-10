@@ -24,8 +24,8 @@
 }
 
 .row span:hover {
-  color: var(--light-blue);
-  border-bottom-color: var(--light-blue);
+  color: var(--dow-red);
+  border-bottom-color: var(--dow-red);
 }
 
 .row:not(:last-child) {

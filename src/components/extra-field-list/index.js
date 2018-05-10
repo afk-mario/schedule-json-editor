@@ -76,7 +76,7 @@ class ExtraFieldList extends React.Component {
     return (
       <div>
         <div className="container two-columns">
-          <h3>{name}</h3>
+          <h5>{name}</h5>
           <span className="button blue" onClick={this.handleExtraField}>
             +
           </span>
@@ -101,6 +101,12 @@ class ExtraFieldList extends React.Component {
             />
           );
         })}
+        <div className="container two-columns">
+          <h5>{name}</h5>
+          <span className="button blue" onClick={this.handleExtraField}>
+            +
+          </span>
+        </div>
       </div>
     );
   }

@@ -41,12 +41,12 @@
 }
 
 #header a:hover {
-  color: var(--light-blue);
+  color: var(--dow-red);
   border-top-color: var(--medium-gray);
 }
 
 #header a.active {
-  color: var(--light-blue);
-  background: var(--dark-gray);
-  border-top-color: var(--light-blue);
+  color: var(--white);
+  background: var(--dow-red);
+  border-top-color: var(--dow-red);
 }

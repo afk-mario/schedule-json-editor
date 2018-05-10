@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) => {
   const { schedules } = state || [];
   const schedule = schedules.filter(item => item.pk === pk)[0] || undefined;
   if (!schedule) {
-    props.history.push('/schedules/');
+    props.history.push('/schedules/schedules/');
   }
   return {
     item: schedule,
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: ({ item, name }) => {
       exportState({ items: item.data, fileName: name, objectName: 'data' });
-      props.history.push('/schedules/');
+      props.history.push('/schedules/schedules/');
     },
   };
 };

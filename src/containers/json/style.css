@@ -20,11 +20,11 @@
 
 .json-pretty {
   background: var(--dark-gray);
-  color: var(--dark-blue);
+  color: var(--dow-gray);
 }
 
 .json-pretty .json-key {
-  color: var(--light-blue);
+  color: var(--text-col);
 }
 
 .json-pretty .json-value {

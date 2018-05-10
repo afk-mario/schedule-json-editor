@@ -15,10 +15,9 @@ input {
   background: transparent;
   border: none;
   box-shadow: none;
-  color: var(--light-gray);
+  color: var(--text-col);
   border-bottom: 2px solid var(--medium-gray);
   transition: all 0.2s ease;
-  color: var(--light-blue);
 }
 
 input[type='number']::-webkit-outer-spin-button,
@@ -38,9 +37,9 @@ input[type='color'] {
 }
 
 input:focus {
-  /* color: var(--light-blue); */
+  /* color: var(--dow-red); */
   color: var(--white);
-  border-bottom-color: var(--light-blue);
+  border-bottom-color: var(--dow-red);
 }
 
 form > *:not(:first-child) {
@@ -50,7 +49,7 @@ form > *:not(:first-child) {
 label {
   margin: 0 0 var(--half-margin) 0;
   display: block;
-  color: var(--dark-blue);
+  color: var(--text-label-col);
 }
 
 button,
@@ -79,7 +78,7 @@ form .button {
 }
 
 .input-checkbox i {
-  color: var(--light-blue);
+  color: var(--text-col);
   transition: all 0.2 ease;
   flex: 1;
   text-align: right;
@@ -94,12 +93,12 @@ input[type='checkbox']:checked + label i {
 }
 
 .Select {
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--text-label-col);
 }
 
 .Select .Select-control {
   border-radius: 0;
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--dow-gray);
 }
 
 .Select,
@@ -110,10 +109,33 @@ input[type='checkbox']:checked + label i {
   color: var(--light-gray);
 }
 
-.Select.has-value.Select--single.is-focused > .Select-control .Select-value span {
-  color: var(--white);
+.Select .Select-option.is-focused {
+  background: var(--dow-gray);
+  color: var(--text-col);
 }
 
-.Select.has-value.Select--single > .Select-control .Select-value span {
-  color: var(--light-blue);
+.Select .Select-option.is-selected {
+  color: var(--text-col);
+}
+
+.Select.has-value.Select--single.is-focused
+> .Select-control
+.Select-value
+span {
+  color: var(--text-col);
+}
+
+.Select.has-value.Select--single
+> .Select-control
+.Select-value
+span {
+  color: var(--text-col);
+}
+
+.Select.has-value.Select--single >
+.Select-control >
+.Select-multi-value-wrapper >
+.Select-value >
+.Select-value-label {
+  color: var(--text-col);
 }

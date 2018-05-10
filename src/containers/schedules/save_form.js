@@ -43,7 +43,7 @@ class SaveForm extends React.Component {
         ...state,
       },
       () => {
-        this.props.history.push('/schedules/');
+        this.props.history.push('/schedules/schedules/');
       }
     );
   }

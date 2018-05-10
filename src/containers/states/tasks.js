@@ -16,13 +16,13 @@ let StatesTasks = ({ items, dispatch, history }) => {
     {
       name: 'Create',
       onClick: () => {
-        history.push('/states/add');
+        history.push('/schedules/states/add');
       },
     },
     {
       name: 'Load',
       onClick: () => {
-        history.push('/states/load');
+        history.push('/schedules/states/load');
       },
     },
     {

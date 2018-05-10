@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700');
 
 :root {
-  --font: 'Fira Mono', monospace;
+  --font: 'Helvetica Neue', Helvetica, Arial, 'Fira Mono', monospace;
 
   /* sizes */
   --border-division: 2px;
@@ -16,19 +16,21 @@
 
   /* colors */
 
-  --white: #ffffff;
-  --black: #000000;
-  --dark-gray: #0c0c0d;
+  --white: #fff;
+  --black: #222;
+  --dark-gray: #222;
   --medium-gray: #323234;
-  --light-gray: #b2b2b2;
-  --light-gray: #f2f2f2;
+  --light-gray: #d2d2d2;
+  --light-gray: #d2d2d2;
   --blue: #0080ff;
-  --light-blue: #98d1cf;
-  --dark-blue: #185869;
+  --dow-red: #f00;
+  --dow-gray: #444;
   --red: #c33126;
   --green: #2ab38d;
   --yellow: #f1b731;
   --magenta: #7a7e9d;
+  --text-col: #eee;
+  --text-label-col: #888;
 
   /* margins */
 
@@ -37,9 +39,9 @@
   --double-margin: calc(var(--margin) * 2);
 
   /* shadows */
-  --text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-  --box-shadow-2: 0 7px 14px rgba(50, 50, 93, 0.1),
+  --text-shadow: 0px 1px 2px rgba(0, 0, 0, 0);
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  --box-shadow-2: 0 7px 14px rgba(50, 50, 93, 0),
     0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
@@ -70,7 +72,7 @@ html {
 .dark-container {
   background: var(--dark-gray);
   box-shadow: var(--box-shadow);
-  color: var(--light-gray);
+  color: var(--text-col);
 }
 
 .container.two-columns {
@@ -80,20 +82,20 @@ html {
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  color: var(--dark-blue);
+  color: var(--text-col);
   margin: var(--margin) auto var(--margin) auto;
 }
 
-.two-columns h3 {
+.two-columns h5 {
   flex: 1;
   margin: 0;
   padding: var(--half-margin);
-  font-weight: 100;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--light-blue);
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+  letter-spacing: 0.1em;
+  color: var(--text-col);
   border: 2px solid;
-  border-color: var(--dark-blue);
+  border-color: var(--dow-gray);
   border-right-width: 2px;
   border-right-style: solid;
   border-right-color: currentcolor;
@@ -101,11 +103,11 @@ html {
 }
 
 .page-child {
-  height: calc(100vh - var(--header-height) - var(--footer-height));
+  /*height: calc(100vh - var(--header-height) - var(--footer-height));*/
   border-top: var(--border-division) solid var(--medium-gray);
-  color: var(--light-gray);
+  color: var(--text-col);
 }
 
 h2 {
-  color: var(--green);
+  color: var(--text-col);
 }

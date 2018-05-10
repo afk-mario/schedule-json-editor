@@ -12,23 +12,23 @@ function mapStateToProps(state) {
 let SchedulesTasks = ({ items, dispatch, history }) => {
   const tasks = [
     {
-      name: 'Create',
+      name: 'Create schedule',
       onClick: () => {
-        history.push('/schedules/add');
+        history.push('/schedules/schedules/add');
       },
     },
-    {
-      name: 'Load',
-      onClick: () => {
-        history.push('/schedules/load');
-      },
-    },
-    {
-      name: 'Clear',
-      onClick: () => {
-        dispatch(clearSchedules());
-      },
-    },
+    // {
+    //   name: 'Load',
+    //   onClick: () => {
+    //     history.push('/schedules/load');
+    //   },
+    // },
+    // {
+    //   name: 'Clear',
+    //   onClick: () => {
+    //     dispatch(clearSchedules());
+    //   },
+    // },
   ];
   return <Tasks items={tasks} />;
 };

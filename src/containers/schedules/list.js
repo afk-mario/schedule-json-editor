@@ -48,7 +48,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...ownProps,
     onClick: pk => {
-      ownProps.history.push(`/schedules/edit/${pk}`);
+      ownProps.history.push(`/schedules/schedules/edit/${pk}`);
     },
     onDelete: (pk, name) => {
       dispatch(deleteSchedule(pk));
@@ -71,9 +71,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         console.log(e);
       }
     },
-    onExport: pk => {
-      ownProps.history.push(`/schedules/save/${pk}`);
-    },
+    // onExport: pk => {
+    //   ownProps.history.push(`/schedules/save/${pk}`);
+    // },
   };
 };
 
