@@ -18,7 +18,7 @@ const spec = [
     name: 'waitForVideo',
     label: 'Video',
     type: 'checkbox',
-    value: false,
+    value: true,
     required: false,
   },
   {
