@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { actions as notifActions } from 'redux-notifications';
 
 import List from '../../components/list';
-import { deleteSchedule } from './actions';
+import { duplicateSchedule, deleteSchedule } from './actions';
 import { truncate } from '../../lib/utils';
 // import { Spacebrew } from '../../lib/sb';
 
@@ -70,6 +70,18 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       } catch (e) {
         console.log(e);
       }*/
+    },
+    onDuplicate: pk => {
+      const schedule = schedules.find(item => item.pk === pk);
+      if (!schedule) return;
+      dispatch(duplicateSchedule(schedule));
+      dispatch(
+        notifSend({
+          message: `Duplicated ${schedule.name}`,
+          kind: 'success',
+          dismissAfter: 1000,
+        })
+      );
     },
     // onExport: pk => {
     //   ownProps.history.push(`/schedules/save/${pk}`);

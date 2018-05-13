@@ -2,6 +2,7 @@ import {
   ADD_SCHEDULE,
   CLEAR_SCHEDULES,
   EDIT_SCHEDULE,
+  DUPLICATE_SCHEDULE,
   DELETE_SCHEDULE,
   LOAD_SCHEDULES,
 } from './actions';
@@ -22,8 +23,15 @@ function schedules(state = [], action) {
             ? {
                 ...action.item,
               }
-            : item,
+            : item
       );
+    case DUPLICATE_SCHEDULE:
+      return [
+        ...state,
+        {
+          ...action.item,
+        },
+      ];
     case DELETE_SCHEDULE:
       return state.filter(item => item.pk !== action.pk);
     case CLEAR_SCHEDULES:

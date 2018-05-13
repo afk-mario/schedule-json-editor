@@ -139,10 +139,7 @@ function getTimerField({ item, spec, options, onChange, index }) {
 
   const showTimerState = options.find(a => a.name === item.state);
   if (!showTimerState) return '';
-  console.log(showTimerState);
   if (!showTimerState.showTimer) return '';
-
-  console.log('showtimer');
 
   const id = v4();
   const showTimerFieldMarkup = (

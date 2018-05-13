@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import Row from '../row';
 import Delete from '../delete';
 import Export from '../export';
+import Duplicate from '../duplicate';
 import Send from '../send';
 
 import './style.css';
 
-const List = ({ items, onClick, onDelete, onExport, onSend }) => {
+const List = ({ items, onClick, onDelete, onExport, onSend, onDuplicate }) => {
   if (items.length < 1)
     return (
       <ul className="list">
@@ -18,6 +19,7 @@ const List = ({ items, onClick, onDelete, onExport, onSend }) => {
     <ul className="list">
       {items.map((item, index) => (
         <Row key={item.id} {...item} onClick={() => onClick(item.id)}>
+          {onDuplicate && <Duplicate id={item.id} onClick={onDuplicate} />}
           {onExport && <Export id={item.id} onClick={onExport} />}
           {onSend && <Send id={item.id} onClick={onSend} />}
           {onDelete && (

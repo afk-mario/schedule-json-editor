@@ -22,7 +22,7 @@ export function clone(target, source) {
   return target;
 }
 
-export function truncate(string, length) {
+export function truncate(string = '', length = 0) {
   if (string.length > length) return string.substring(0, length) + '…';
   return string;
 }

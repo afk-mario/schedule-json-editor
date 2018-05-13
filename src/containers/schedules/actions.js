@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
-export const ADD_SCHEDULE = 'ADD_SCHEDULE';
 
+export const ADD_SCHEDULE = 'ADD_SCHEDULE';
 export function addSchedule(item) {
   return {
     type: ADD_SCHEDULE,
@@ -23,6 +23,15 @@ export function editSchedule(item) {
   return {
     type: EDIT_SCHEDULE,
     item,
+  };
+}
+
+export const DUPLICATE_SCHEDULE = 'DUPLICATE_SCHEDULE';
+export function duplicateSchedule(item) {
+  const dup = { ...item, pk: v4() };
+  return {
+    type: DUPLICATE_SCHEDULE,
+    item: dup,
   };
 }
 
