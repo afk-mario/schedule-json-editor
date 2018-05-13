@@ -110,6 +110,7 @@ function getAdvanceFieldMarkup({ item, spec, options, onChange, index }) {
   );
   if (!advancedFieldState) return advancedFieldString;
   if (!advancedFieldState.options) return advancedFieldString;
+  if (advancedFieldState.options.length < 1) return advancedFieldString;
   return (
     <Select
       name={advancedField.name}

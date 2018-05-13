@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, props) => {
   const { notifSend } = notifActions;
   return {
     onClick: pk => {
-      props.history.push(`/states/edit/${pk}`);
+      props.history.push(`/schedules/states/edit/${pk}`);
     },
     onDelete: (pk, name) => {
       dispatch(deleteState(pk));
@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch, props) => {
       );
     },
     onExport: pk => {
-      props.history.push(`/states/save/${pk}`);
+      props.history.push(`/schedules/states/save/${pk}`);
     },
   };
 };

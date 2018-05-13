@@ -8,9 +8,9 @@
   width: 100%;
   height: 200px;
   font-size: 1.6em;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.1em;
   line-height: 2.5em;
-  color: var(--dark-blue);
+  color: var(--dow-gray);
   cursor: pointer;
   text-transform: uppercase;
   margin: var(--margin) auto;
@@ -31,11 +31,11 @@
   text-align: center;
   transition: all 0.2s ease;
   background: var(--black);
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--dow-gray);
 }
 
 .load .active-drop {
-  color: var(--light-blue);
-  border-color: var(--light-blue);
+  color: var(--dow-red);
+  border-color: var(--dow-red);
   background: var(--dark-gray);
 }

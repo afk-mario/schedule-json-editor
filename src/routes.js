@@ -21,78 +21,78 @@ import { Redirect } from 'react-router-dom';
 
 const routes = [
   {
-    path: '/',
+    path: '/schedules/',
     component: () => <Redirect from="/" to="/schedules" />,
     exact: true,
   },
   {
-    path: '/schedules',
+    path: '/schedules/schedules',
     name: 'Schedules',
     component: Schedules,
     routes: [
       {
-        path: '/schedules/add',
+        path: '/schedules/schedules/add',
         component: AddSchedules,
         exact: true,
       },
       {
-        path: '/schedules/load',
+        path: '/schedules/schedules/load',
         component: LoadSchedules,
         exact: true,
       },
       {
-        path: '/schedules/edit/:pk',
+        path: '/schedules/schedules/edit/:pk',
         component: EditSchedules,
         exact: true,
       },
       {
-        path: '/schedules/save/:pk',
+        path: '/schedules/schedules/save/:pk',
         component: SaveSchedules,
         exact: true,
       },
     ],
   },
   {
-    path: '/states',
+    path: '/schedules/states',
     name: 'States',
     component: States,
     routes: [
       {
-        path: '/states/add',
+        path: '/schedules/states/add',
         component: AddStates,
         exact: true,
       },
       {
-        path: '/states/edit/:pk',
+        path: '/schedules/states/edit/:pk',
         component: EditStates,
         exact: true,
       },
       {
-        path: '/states/save/:pk',
+        path: '/schedules/states/save/:pk',
         component: SaveStates,
         exact: true,
       },
       {
-        path: '/states/load',
+        path: '/schedules/states/load',
         component: LoadStates,
         exact: true,
       },
     ],
   },
   {
-    path: '/json',
+    path: '/schedules/json',
     name: 'Json',
     exact: true,
     component: Json,
   },
   {
-    path: '/settings',
+    path: '/schedules/settings',
     name: 'Settings',
     exact: true,
     component: Settings,
   },
   {
-    path: '/404',
+    path: '/schedules/404',
     exact: false,
     component: NoMatch,
   },
