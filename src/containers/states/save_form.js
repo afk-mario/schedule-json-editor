@@ -29,6 +29,7 @@ class SaveForm extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log('submit');
     const { onSubmit } = this.props;
 
     event.preventDefault();

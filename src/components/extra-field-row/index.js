@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
@@ -87,7 +88,11 @@ function hasAdvanceField(field) {
   return field.label === 'Advanced';
 }
 
-function getAdvanceFieldMarkup({ item, spec, options, onChange, index }) {
+function hasTimerField(field) {
+  return field.name === 'timer';
+}
+
+function getAdvancedFieldMarkup({ item, spec, options, onChange, index }) {
   const advancedField = spec.find(hasAdvanceField);
   if (!advancedField) return '';
   if (!options) return '';
@@ -127,6 +132,37 @@ function getAdvanceFieldMarkup({ item, spec, options, onChange, index }) {
   );
 }
 
+function getTimerField({ item, spec, options, onChange, index }) {
+  const showTimerField = spec.find(hasTimerField);
+  if (!showTimerField) return '';
+  if (!options) return '';
+
+  const showTimerState = options.find(a => a.name === item.state);
+  if (!showTimerState) return '';
+  console.log(showTimerState);
+  if (!showTimerState.showTimer) return '';
+
+  console.log('showtimer');
+
+  const id = v4();
+  const showTimerFieldMarkup = (
+    <Input
+      {...showTimerField}
+      hide={''}
+      key={id}
+      id={`${showTimerField.name}-${id}`}
+      value={item[showTimerField.name]}
+      onChange={e => {
+        const { target } = e;
+        const value =
+          target.type === 'checkbox' ? target.checked : target.value;
+        onChange(index, { ...item, [showTimerField.name]: value });
+      }}
+    />
+  );
+  return showTimerFieldMarkup;
+}
+
 const ExtraFieldRow = props => {
   const {
     id,
@@ -147,7 +183,9 @@ const ExtraFieldRow = props => {
     opacity: isDragging ? 0.5 : 1,
   };
 
-  const advancedField = getAdvanceFieldMarkup(props);
+  const advancedField = getAdvancedFieldMarkup(props);
+  const timerField = getTimerField(props);
+
   return connectDropTarget(
     connectDragSource(
       <div className="extra-field-row" style={style}>
@@ -166,6 +204,7 @@ const ExtraFieldRow = props => {
               required
             />
           )}
+          {timerField}
           {spec.map(
             (field, i) =>
               field.hide ? (

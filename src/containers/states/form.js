@@ -40,6 +40,8 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     const { onSubmit, item } = this.props;
+    console.log(item);
+    console.log(this.state);
 
     event.preventDefault();
     onSubmit(this.state);
@@ -90,7 +92,11 @@ class Form extends React.Component {
               <Input
                 key={i}
                 {...item}
-                value={this.state[item.name]}
+                value={
+                  this.state[item.name] !== undefined
+                    ? this.state[item.name]
+                    : item.value
+                }
                 onChange={this.handleInputChange}
               />
             )

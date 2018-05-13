@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearSchedules } from './actions';
 import Tasks from '../../components/tasks';
 import { withRouter } from 'react-router';
+
+// import { clearSchedules } from './actions';
 
 function mapStateToProps(state) {
   const { schedules } = state;

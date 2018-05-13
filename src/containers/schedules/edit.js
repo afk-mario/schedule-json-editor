@@ -9,10 +9,10 @@ const mapStateToProps = (state, props) => {
   const { pk } = props.match.params;
   const { schedules, states } = state || [];
   const single = schedules.filter(item => item.pk === pk)[0] || undefined;
-  if (!single) {
-    props.history.push('/404');
-    return { item: {}, options: [] };
-  }
+  /* if (!single) { */
+  /*   props.history.push('/404'); */
+  /*   return { item: {}, options: [] }; */
+  /* } */
   return {
     item: single,
     options: states,

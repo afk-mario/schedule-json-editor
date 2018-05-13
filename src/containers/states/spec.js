@@ -14,6 +14,12 @@ const spec = [
     required: true,
   },
   {
+    name: 'showTimer',
+    label: 'Show timer',
+    type: 'checkbox',
+    value: true,
+  },
+  {
     name: 'options',
     label: 'Options',
     type: 'extra-fields',

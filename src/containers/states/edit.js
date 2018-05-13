@@ -9,9 +9,9 @@ const mapStateToProps = (state, props) => {
   const { pk } = props.match.params;
   const { states } = state || [];
   const item = states.filter(item => item.pk === pk)[0] || undefined;
-  if (!item) {
-    props.history.push('/states/');
-  }
+  /* if (!item) { */
+  /*   props.history.push('/states/'); */
+  /* */
   return {
     item,
   };

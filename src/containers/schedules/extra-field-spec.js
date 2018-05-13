@@ -13,6 +13,7 @@ const spec = [
     type: 'number',
     value: -1,
     required: true,
+    hide: 'true',
   },
   {
     name: 'waitForVideo',
