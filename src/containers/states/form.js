@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
+import ExtraFieldList from '../../components/extra-field-list';
 import Input from '../../components/input';
 import spec from './spec';
+import extraFieldSpec from './extra-field-spec';
 
 class Form extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class Form extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.onSelectOption = this.onSelectOption.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onExtraFieldsChange = this.onExtraFieldsChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,7 +23,7 @@ class Form extends React.Component {
       const item = nextProps.item;
       this.setState({
         ...item,
-        linePoints: item.linePoints,
+        options: item.options,
       });
     }
   }
@@ -49,6 +52,7 @@ class Form extends React.Component {
     this.setState(
       {
         ...state,
+        options: [],
       },
       () => {
         // this.props.history.push('/states/');
@@ -68,8 +72,13 @@ class Form extends React.Component {
     });
   }
 
+  onExtraFieldsChange(state) {
+    this.setState({ options: state.items });
+  }
+
   render() {
-    // const {items} = this.props;
+    // ooptions is like scheudle data
+    const { options = [] } = this.state;
 
     return (
       <form className="dark-container" onSubmit={this.handleSubmit}>
@@ -86,6 +95,12 @@ class Form extends React.Component {
               />
             )
         )}
+        <ExtraFieldList
+          name="Add Option"
+          items={options}
+          onExtraFieldsChange={this.onExtraFieldsChange}
+          spec={extraFieldSpec}
+        />
         <button className="button blue" type="submit">
           SAVE
         </button>

@@ -13,6 +13,7 @@
     "immutability-helper": "^2.5.0",
     "lint-staged": "^5.0.0",
     "lodash": "^4.17.4",
+    "npm": "^6.0.1",
     "prettier": "^1.8.2",
     "react": "^16.1.1",
     "react-dnd": "^2.5.4",

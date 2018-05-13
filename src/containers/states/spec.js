@@ -13,6 +13,13 @@ const spec = [
     value: '#2aa889',
     required: true,
   },
+  {
+    name: 'options',
+    label: 'Options',
+    type: 'extra-fields',
+    value: [],
+    hide: true,
+  },
 ];
 
 export default spec;

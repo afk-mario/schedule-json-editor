@@ -94,12 +94,12 @@ input[type='checkbox']:checked + label i {
 }
 
 .Select {
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--text-label-col);
 }
 
 .Select .Select-control {
   border-radius: 0;
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--dow-gray);
 }
 
 .Select,
@@ -110,10 +110,22 @@ input[type='checkbox']:checked + label i {
   color: var(--light-gray);
 }
 
-.Select.has-value.Select--single.is-focused > .Select-control .Select-value span {
-  color: var(--white);
+.Select .Select-option.is-focused {
+  background: var(--dow-gray);
+  color: var(--text-col);
+}
+
+.Select .Select-option.is-selected {
+  color: var(--text-col);
+}
+
+.Select.has-value.Select--single.is-focused
+  > .Select-control
+  .Select-value
+  span {
+  color: var(--text-col);
 }
 
 .Select.has-value.Select--single > .Select-control .Select-value span {
-  color: var(--light-blue);
+  color: var(--text-col);
 }

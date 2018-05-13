@@ -11,6 +11,8 @@ const mapStateToProps = state => {
     ...spec.map(({ name, value }) => ({ [name]: value }))
   );
 
+  console.log(item);
+
   return {
     item,
   };

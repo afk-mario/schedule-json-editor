@@ -83,6 +83,49 @@ function idk(connect) {
   };
 }
 
+function hasAdvanceField(field) {
+  return field.label === 'Advanced';
+}
+
+function getAdvanceFieldMarkup({ item, spec, options, onChange, index }) {
+  const advancedField = spec.find(hasAdvanceField);
+  if (!advancedField) return '';
+  if (!options) return '';
+
+  const advancedFieldState = options.find(a => a.name === item.state);
+  const advancedFieldString = (
+    <Input
+      {...advancedField}
+      hide={''}
+      key={spec.length}
+      id={`${advancedField.name}-${spec.length}`}
+      value={item[advancedField.name]}
+      onChange={e => {
+        const { target } = e;
+        const value =
+          target.type === 'checkbox' ? target.checked : target.value;
+        onChange(index, { ...item, [advancedField.name]: value });
+      }}
+    />
+  );
+  if (!advancedFieldState) return advancedFieldString;
+  if (!advancedFieldState.options) return advancedFieldString;
+  return (
+    <Select
+      name={advancedField.name}
+      options={advancedFieldState.options}
+      labelKey="option"
+      valueKey="option"
+      value={item[advancedField.name]}
+      clearable={false}
+      onChange={option => {
+        onChange(index, { ...item, template: option.option });
+      }}
+      required
+    />
+  );
+}
+
 const ExtraFieldRow = props => {
   const {
     id,
@@ -103,22 +146,25 @@ const ExtraFieldRow = props => {
     opacity: isDragging ? 0.5 : 1,
   };
 
+  const advancedField = getAdvanceFieldMarkup(props);
   return connectDropTarget(
     connectDragSource(
       <div className="extra-field-row" style={style}>
         <div className="fieldset" id={id}>
-          <Select
-            name="state"
-            options={options}
-            labelKey="name"
-            valueKey="name"
-            value={item.state}
-            clearable={false}
-            onChange={option => {
-              onChange(index, { ...item, state: option.name });
-            }}
-            required
-          />
+          {options && (
+            <Select
+              name="state"
+              options={options}
+              labelKey="name"
+              valueKey="name"
+              value={item.state}
+              clearable={false}
+              onChange={option => {
+                onChange(index, { ...item, state: option.name });
+              }}
+              required
+            />
+          )}
           {spec.map(
             (field, i) =>
               field.hide ? (
@@ -140,6 +186,7 @@ const ExtraFieldRow = props => {
                 />
               )
           )}
+          {advancedField}
           <Delete id={index} onClick={onDelete} />
         </div>
       </div>

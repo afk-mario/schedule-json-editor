@@ -43,7 +43,6 @@ class Form extends React.Component {
 
     event.preventDefault();
     onSubmit(this.state);
-    console.log(item);
 
     if (item.pk != null) return;
 

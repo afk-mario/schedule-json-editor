@@ -82,7 +82,9 @@ class ExtraFieldList extends React.Component {
           </span>
         </div>
         {items.map((item, i) => {
-          const option = options.find(a => a.name === item.state);
+          const option = options
+            ? options.find(a => a.name === item.state)
+            : null;
           const color = option ? option.color : '#ffffff';
           return (
             <ExtraFieldRow

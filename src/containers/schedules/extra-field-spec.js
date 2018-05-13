@@ -27,6 +27,7 @@ const spec = [
     type: 'string',
     required: false,
     value: '',
+    hide: true,
   },
 ];
 

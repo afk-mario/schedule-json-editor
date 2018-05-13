@@ -63,7 +63,7 @@
 
 .fieldset .input-number,
 .fieldset .input-string {
-  max-width: 200px;
+  /* max-width: 200px; */
 }
 
 .fieldset input[type='number'],
