@@ -113,9 +113,10 @@ function getAdvancedFieldMarkup({ item, spec, options, onChange, index }) {
       }}
     />
   );
-  if (!advancedFieldState) return advancedFieldString;
-  if (!advancedFieldState.options) return advancedFieldString;
-  if (advancedFieldState.options.length < 1) return advancedFieldString;
+  // don't need a string based advanced field at the moment, so returning a blank string for now
+  if (!advancedFieldState) return '';
+  if (!advancedFieldState.options) return '';
+  if (advancedFieldState.options.length < 1) return '';
   return (
     <Select
       name={advancedField.name}
@@ -201,7 +202,6 @@ const ExtraFieldRow = props => {
               required
             />
           )}
-          {timerField}
           {spec.map(
             (field, i) =>
               field.hide ? (
@@ -223,6 +223,7 @@ const ExtraFieldRow = props => {
                 />
               )
           )}
+          {timerField}
           {advancedField}
           <Delete id={index} onClick={onDelete} />
         </div>

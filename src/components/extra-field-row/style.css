@@ -5,6 +5,9 @@
 }
 
 .fieldset {
+  width: 100%;
+  border: none;
+  padding: 0;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
@@ -17,13 +20,13 @@
 .fieldset .delete,
 .fieldset .Select {
   display: block;
-  width: auto;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   margin: 0;
   padding: 0;
 }
 
 .fieldset .delete {
+  float: right;
   border: 2px solid var(--medium-gray);
   flex: 0 0 auto;
   width: 50px;
@@ -44,7 +47,7 @@
 }
 
 .fieldset input {
-  width: auto;
+  /*width: auto;*/
 }
 
 .extra-field-row {
@@ -52,7 +55,7 @@
 }
 
 .fieldset .input-checkbox {
-  flex: 0 0 auto;
+  /*flex: 0 0 auto;*/
 }
 
 .fieldset .input-checkbox label {
@@ -63,7 +66,8 @@
 
 .fieldset .input-number,
 .fieldset .input-string {
-  /* max-width: 200px; */
+  width: 33%;
+   max-width: 400px;
 }
 
 .fieldset input[type='number'],
