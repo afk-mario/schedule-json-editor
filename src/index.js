@@ -18,35 +18,63 @@ import registerServiceWorker from './registerServiceWorker';
 import 'react-select/dist/react-select.css';
 
 import { Spacebrew } from './lib/sb';
+import axios from "axios/index";
 window.Spacebrew = Spacebrew;
 
 const history = createHistory();
 const a = routerMiddleware(history);
 const middleware = [a, thunk];
 
-const persistedState = loadState();
-const store = createStore(
-  AppReducer,
-  persistedState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+let persistedState;
+let store;
 
-store.subscribe(
-  throttle(() => {
-    const { schedules, states, settings } = store.getState();
-    saveState({
-      schedules,
-      states,
-      settings,
-    });
-  }, 1000)
-);
 
-render(
-  <Provider store={store}>
-    <App history={history} />
-  </Provider>,
-  document.getElementById('root')
-);
+// load all data from DB
+// axios.get(`http://192.168.86.30:3000/schedule/data`).then(res => {
+axios.get(`/schedule/data`).then(res => {
+  console.log("---> MONGO");
 
-registerServiceWorker();
+  // MONGO DB
+  const schedules = JSON.parse(res.data.schedules);
+  const states = JSON.parse(res.data.states);
+  const settings = JSON.parse(res.data.settings);
+  console.log(schedules);
+  console.log(states);
+  console.log(settings);
+
+  // save loaded data into local storage
+  saveState({ schedules, settings, states });
+
+
+  // contine as normal
+  persistedState = loadState({});
+
+  store = createStore(
+    AppReducer,
+    persistedState,
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
+
+  store.subscribe(
+    throttle(() => {
+      const { schedules, states, settings } = store.getState();
+      saveState({
+        schedules,
+        states,
+        settings,
+      });
+    }, 1000)
+  );
+
+  render(
+    <Provider store={store}>
+      <App history={history} />
+    </Provider>,
+    document.getElementById('root')
+  );
+
+  registerServiceWorker();
+
+}).catch((e) => {
+  console.log("---> ERROR LOADING CONTENT");
+});
