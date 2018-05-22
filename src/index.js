@@ -30,8 +30,8 @@ let store;
 
 
 // load all data from DB
-// axios.get(`http://192.168.86.30:3000/schedule/data`).then(res => {
-axios.get(`/schedule/data`).then(res => {
+axios.get(`http://192.168.86.30:3000/schedule/data`).then(res => {
+// axios.get(`/schedule/data`).then(res => {
   console.log("---> MONGO");
 
   // MONGO DB

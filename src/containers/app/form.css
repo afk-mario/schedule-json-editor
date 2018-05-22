@@ -7,7 +7,6 @@ form {
 }
 
 input {
-  width: 100%;
   height: auto;
   padding: var(--half-margin) 0 2px 0;
   font-size: 1.2em;
@@ -87,7 +86,7 @@ input[type='checkbox']:checked + label i {
 }
 
 .Select {
-  width: 33%;
+  width: 20%;
   max-width: 400px;
   border: 2px solid var(--text-label-col);
 }

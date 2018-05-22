@@ -30,6 +30,13 @@ const spec = [
     value: '',
     hide: true,
   },
+  {
+    name: 'loops',
+    label: 'Loops',
+    type: 'number',
+    required: false,
+    value: '-1',
+  },
 ];
 
 export default spec;
