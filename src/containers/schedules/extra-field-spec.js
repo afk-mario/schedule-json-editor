@@ -11,7 +11,7 @@ const spec = [
     name: 'timer',
     label: 'Timer',
     type: 'number',
-    value: -1,
+    value: 180,
     required: true,
     hide: 'true',
   },
@@ -21,6 +21,7 @@ const spec = [
     type: 'checkbox',
     value: true,
     required: false,
+    hide: true,
   },
   {
     name: 'template',
@@ -36,6 +37,7 @@ const spec = [
     type: 'number',
     required: false,
     value: '-1',
+    hide: true,
   },
 ];
 

@@ -81,6 +81,7 @@ class ExtraFieldList extends React.Component {
             +
           </span>
         </div>
+
         {items.map((item, i) => {
           const option = options
             ? options.find(a => a.name === item.state)
@@ -103,6 +104,7 @@ class ExtraFieldList extends React.Component {
             />
           );
         })}
+
         <div className="container two-columns">
           <h5>{name}</h5>
           <span className="button blue" onClick={this.handleExtraField}>

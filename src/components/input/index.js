@@ -27,6 +27,7 @@ const Input = props => {
       </div>
     );
   }
+
   return (
     <div className={className}>
       <label htmlFor={selector}>{label ? label : name}</label>

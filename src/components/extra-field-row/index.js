@@ -91,8 +91,17 @@ function hasTimerField(field) {
   return field.name === 'timer';
 }
 
+function hasLoopsField(field) {
+  return field.name === 'loops';
+}
+
+function hasVideoField(field) {
+  return field.name === 'waitForVideo';
+}
+
 function getAdvancedFieldMarkup({ item, spec, options, onChange, index }) {
   const advancedField = spec.find(hasAdvanceField);
+
   if (!advancedField) return '';
   if (!options) return '';
 
@@ -112,10 +121,12 @@ function getAdvancedFieldMarkup({ item, spec, options, onChange, index }) {
       }}
     />
   );
+
   // don't need a string based advanced field at the moment, so returning a blank string for now
   if (!advancedFieldState) return '';
   if (!advancedFieldState.options) return '';
   if (advancedFieldState.options.length < 1) return '';
+
   return (
     <Select
       name={advancedField.name}
@@ -133,31 +144,87 @@ function getAdvancedFieldMarkup({ item, spec, options, onChange, index }) {
 }
 
 function getTimerField({ item, spec, options, onChange, index }) {
-  const showTimerField = spec.find(hasTimerField);
-  if (!showTimerField) return '';
+  const showField = spec.find(hasTimerField);
+  if (!showField) return '';
   if (!options) return '';
 
-  const showTimerState = options.find(a => a.name === item.state);
-  if (!showTimerState) return '';
-  if (!showTimerState.showTimer) return '';
+  const showState = options.find(a => a.name === item.state);
+  if (!showState) return '';
+  if (!showState.showTimer) return '';
 
   const id = spec.length - 1;
-  const showTimerFieldMarkup = (
+  const showFieldMarkup = (
     <Input
-      {...showTimerField}
+      {...showField}
       hide={''}
       key={id}
-      id={`${showTimerField.name}-${id}`}
-      value={item[showTimerField.name]}
+      id={`${showField.name}-${id}`}
+      value={item[showField.name]}
       onChange={e => {
         const { target } = e;
         const value =
           target.type === 'checkbox' ? target.checked : target.value;
-        onChange(index, { ...item, [showTimerField.name]: value });
+        onChange(index, { ...item, [showField.name]: value });
       }}
     />
   );
-  return showTimerFieldMarkup;
+  return showFieldMarkup;
+}
+
+function getLoopsField({ item, spec, options, onChange, index }) {
+  const showField = spec.find(hasLoopsField);
+  if (!showField) return '';
+  if (!options) return '';
+
+  const showState = options.find(a => a.name === item.state);
+  if (!showState) return '';
+  if (!showState.showLoops) return '';
+
+  const id = spec.length - 1;
+  const showFieldMarkup = (
+    <Input
+      {...showField}
+      hide={''}
+      key={id}
+      id={`${showField.name}-${id}`}
+      value={item[showField.name]}
+      onChange={e => {
+        const { target } = e;
+        const value =
+          target.type === 'checkbox' ? target.checked : target.value;
+        onChange(index, { ...item, [showField.name]: value });
+      }}
+    />
+  );
+  return showFieldMarkup;
+}
+
+function getVideoField({ item, spec, options, onChange, index }) {
+  const showField = spec.find(hasVideoField);
+  if (!showField) return '';
+  if (!options) return '';
+
+  const showState = options.find(a => a.name === item.state);
+  if (!showState) return '';
+  if (!showState.showWaitForVideo) return '';
+
+  const id = spec.length - 1;
+  const showFieldMarkup = (
+    <Input
+      {...showField}
+      hide={''}
+      key={id}
+      id={`${showField.name}-${id}`}
+      value={item[showField.name]}
+      onChange={e => {
+        const { target } = e;
+        const value =
+          target.type === 'checkbox' ? target.checked : target.value;
+        onChange(index, { ...item, [showField.name]: value });
+      }}
+    />
+  );
+  return showFieldMarkup;
 }
 
 const ExtraFieldRow = props => {
@@ -182,6 +249,8 @@ const ExtraFieldRow = props => {
 
   const advancedField = getAdvancedFieldMarkup(props);
   const timerField = getTimerField(props);
+  const videoField = getVideoField(props);
+  const loopField = getLoopsField(props);
 
   return connectDropTarget(
     connectDragSource(
@@ -222,8 +291,11 @@ const ExtraFieldRow = props => {
                 />
               )
           )}
-          {timerField}
           {advancedField}
+          {timerField}
+          {videoField}
+          {loopField}
+          <div className="paddingField" />
           <Delete id={index} onClick={onDelete} />
         </div>
       </div>
