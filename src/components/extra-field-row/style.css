@@ -20,7 +20,7 @@
 .fieldset .delete,
 .fieldset .Select {
   display: block;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   margin: 0;
   padding: 0;
 }
@@ -67,7 +67,7 @@
 .fieldset .input-number,
 .fieldset .input-string {
   width: 33%;
-   max-width: 400px;
+  max-width: 400px;
 }
 
 .fieldset input[type='number'],
