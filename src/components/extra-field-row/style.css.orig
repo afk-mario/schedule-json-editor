@@ -66,8 +66,13 @@
 
 .fieldset .input-number,
 .fieldset .input-string {
+<<<<<<< HEAD
+  width: 20%;
+   max-width: 400px;
+=======
   width: 33%;
   max-width: 400px;
+>>>>>>> master
 }
 
 .fieldset input[type='number'],

@@ -1,5 +1,4 @@
 import React from 'react';
-import { v4 } from 'uuid';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
@@ -142,7 +141,7 @@ function getTimerField({ item, spec, options, onChange, index }) {
   if (!showTimerState) return '';
   if (!showTimerState.showTimer) return '';
 
-  const id = v4();
+  const id = spec.length - 1;
   const showTimerFieldMarkup = (
     <Input
       {...showTimerField}
