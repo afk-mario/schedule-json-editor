@@ -20,6 +20,18 @@ const spec = [
     value: true,
   },
   {
+    name: 'showWaitForVideo',
+    label: 'Show video',
+    type: 'checkbox',
+    value: false,
+  },
+  {
+    name: 'showLoops',
+    label: 'Show loops',
+    type: 'checkbox',
+    value: false,
+  },
+  {
     name: 'options',
     label: 'Options',
     type: 'extra-fields',
